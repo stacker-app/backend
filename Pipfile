@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+djangorestframework = "*"
+django-filter = "*"
+django-rest-auth = "*"
+djangorestframework-jwt = "*"
+"psycopg2" = "*"
+six = "*"
+pytz = "*"
+coreapi = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"

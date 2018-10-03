@@ -1,0 +1,31 @@
+version: '3'
+
+volumes:
+  postgres_data:
+
+services:
+  db:
+    image: postgres:alpine
+    volumes:
+    - postgres_data:/var/lib/postgresql/data/
+
+  migration:
+    build: .
+    image: app
+    command: python manage.py migrate
+    volumes:
+    - .:/code
+    links:
+    - db
+    depends_on:
+    - db
+
+  web:
+    image: app
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
